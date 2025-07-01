@@ -59,7 +59,7 @@ def gerar_pdf(juiz, resumo, recomendacao, tese_df, fundamentacoes):
 uploaded_file = st.file_uploader("📎 Envie a planilha de decisões (.csv)", type=".csv")
 
 if uploaded_file:
-    df = pd.read_excel(uploaded_file)
+    df = pd.read_csv(uploaded_file)
     df['Juiz'] = df['Juiz'].astype(str)
     juizes = df['Juiz'].unique()
     juiz_selecionado = st.selectbox("Selecione um juiz para análise:", sorted(juizes))
