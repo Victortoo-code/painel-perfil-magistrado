@@ -56,7 +56,7 @@ def gerar_pdf(juiz, resumo, recomendacao, tese_df, fundamentacoes):
     return tmp_pdf.name
 
 # Upload do arquivo Excel
-uploaded_file = st.file_uploader("📎 Envie a planilha de decisões (.xlsx)", type="xlsx")
+uploaded_file = st.file_uploader("📎 Envie a planilha de decisões (.csv)", type=".csv")
 
 if uploaded_file:
     df = pd.read_excel(uploaded_file)
