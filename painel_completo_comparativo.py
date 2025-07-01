@@ -60,7 +60,7 @@ def gerar_pdf_completo(titulo, resumo, recomendacao, tese_df, fundamentacoes):
 uploaded_file = st.file_uploader("📎 Envie a planilha de decisões (.csv)", type=".csv")
 
 if uploaded_file:
-    df = pd.read_excel(uploaded_file)
+    df = pd.read_csv(uploaded_file)
     df['Juiz'] = df['Juiz'].astype(str)
     juizes = sorted(df['Juiz'].unique())
     modo = st.radio("🔍 Modo de análise:", ["Análise Individual", "Comparar Juízes"])
