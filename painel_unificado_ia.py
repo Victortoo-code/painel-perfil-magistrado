@@ -10,7 +10,9 @@ import openai
 st.set_page_config(page_title="Painel de Perfil de Magistrado", layout="wide")
 st.title("📊 Painel de Perfil de Magistrado Unificado com IA")
 
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+from openai import OpenAI
+
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 def gerar_recomendacao_ia(df_juiz):
     juiz_nome = df_juiz['Juiz'].iloc[0]
@@ -34,13 +36,14 @@ def gerar_recomendacao_ia(df_juiz):
     Gere uma recomendação objetiva e estratégica com base nesse perfil.
     """
 
-    resposta = openai.ChatCompletion.create(
+    resposta = client.chat.completions.create(
         model="gpt-4",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.4,
         max_tokens=300
     )
     return resposta.choices[0].message.content.strip()
+
 
 def gerar_pdf(titulo, resumo, recomendacao, tese_df, fundamentacoes):
     pdf = FPDF()
