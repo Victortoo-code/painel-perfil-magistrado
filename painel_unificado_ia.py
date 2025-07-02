@@ -72,10 +72,10 @@ def gerar_pdf(titulo, resumo, recomendacao, tese_df, fundamentacoes):
     pdf.output(tmp_pdf.name)
     return tmp_pdf.name
 
-uploaded_file = st.file_uploader("📎 Envie a planilha de decisões (.csv)", type=".csv")
+uploaded_file = st.file_uploader("📎 Envie a planilha de decisões (.xlsx)", type=".xlsx")
 
 if uploaded_file:
-    df = pd.read_csv(uploaded_file)
+    df = pd.read_excel(uploaded_file)
     df['Juiz'] = df['Juiz'].astype(str)
     juizes = sorted(df['Juiz'].unique())
     aba = st.radio("Escolha a visualização:", ["👤 Análise Individual", "⚖️ Comparar Juízes"])
