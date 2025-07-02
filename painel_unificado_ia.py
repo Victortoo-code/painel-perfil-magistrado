@@ -75,7 +75,7 @@ def gerar_pdf(titulo, resumo, recomendacao, tese_df, fundamentacoes):
 uploaded_file = st.file_uploader("📎 Envie a planilha de decisões (.xlsx)", type=".xlsx")
 
 if uploaded_file:
-    df = pd.read_excel(uploaded_file)
+    df = pd.read_xlsx(uploaded_file)
     df['Juiz'] = df['Juiz'].astype(str)
     juizes = sorted(df['Juiz'].unique())
     aba = st.radio("Escolha a visualização:", ["👤 Análise Individual", "⚖️ Comparar Juízes"])
