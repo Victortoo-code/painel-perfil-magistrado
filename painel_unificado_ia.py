@@ -128,3 +128,9 @@ if uploaded_file:
             with open(caminho_pdf, "rb") as f:
                 st.download_button("📥 Baixar Relatório PDF", f, file_name=f"relatorio_{juiz}.pdf")
             os.remove(caminho_pdf)
+            
+            import openai
+st.write(f"Versão do openai: {openai.__version__}")
+
+
+
